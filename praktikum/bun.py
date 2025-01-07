@@ -5,6 +5,8 @@ class Bun:
     """
 
     def __init__(self, name: str, price: float):
+        if price < 0:
+            raise ValueError("Цена не может быть отрицательной")
         self.name = name
         self.price = price
 

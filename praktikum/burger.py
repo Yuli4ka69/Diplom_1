@@ -1,5 +1,4 @@
 from typing import List
-
 from praktikum.bun import Bun
 from praktikum.ingredient import Ingredient
 
@@ -17,14 +16,13 @@ class Burger:
         self.ingredients: List[Ingredient] = []
 
     def set_buns(self, bun: Bun):
-        self.bun = bun
+        self.bun = bun  # Бун будет передан извне и используется здесь без повторного импорта
 
     def add_ingredient(self, ingredient: Ingredient):
         self.ingredients.append(ingredient)
 
-    def remove_ingredient(self, index: int):
-        del self.ingredients[index]
-
+    def remove_ingredient(self, index):
+        self.ingredients.pop(index)
     def move_ingredient(self, index: int, new_index: int):
         self.ingredients.insert(new_index, self.ingredients.pop(index))
 
@@ -42,7 +40,8 @@ class Burger:
         for ingredient in self.ingredients:
             receipt.append(f'= {str(ingredient.get_type()).lower()} {ingredient.get_name()} =')
 
-        receipt.append(f'(==== {self.bun.get_name()} ====)\n')
+        receipt.append(f'(==== {self.bun.get_name()} ====)')
         receipt.append(f'Price: {self.get_price()}')
 
         return '\n'.join(receipt)
+
