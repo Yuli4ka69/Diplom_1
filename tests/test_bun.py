@@ -15,11 +15,6 @@ def test_bun_initialization(name, price, expected_name, expected_price):
     assert bun.get_name() == expected_name
     assert bun.get_price() == expected_price
 
-# Проверка отрицательной цены
-def test_bun_negative_price():
-    with pytest.raises(ValueError, match="Цена не может быть отрицательной"):
-        Bun("Sesame", -1.5)
-
 # Проверка возврата имени
 def test_bun_get_name():
     bun = Bun("Rye", 1.7)

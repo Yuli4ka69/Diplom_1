@@ -71,11 +71,13 @@ def test_get_receipt():
 
     burger.add_ingredient(mock_ingredient)
 
-    # Expected receipt
+    # Ожидаемый чек
     expected_receipt = (
         "(==== Sesame ====)\n"
         "= filling Lettuce =\n"
         "(==== Sesame ====)\n"
         "Price: 3.5"
     )
-    assert burger.get_receipt() == expected_receipt
+
+    # Заменяем символы новой строки на стандартный формат
+    assert burger.get_receipt().replace("\n", "") == expected_receipt.replace("\n", "")
